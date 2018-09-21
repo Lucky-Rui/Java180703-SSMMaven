@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.situ.ssm.dao.BanjiMapper">
+	<resultMap type="Banji" id="banjiMap">
+		<id property="id" column="banjiId"/>
+		<result property="name" column="banjiName"/>
+		<!-- collection:集合 -->
+		<collection property="studentList" ofType="Student">
+			<id property="id" column="studentId"/>
+			<result property="name" column="studentName"/>
+			<result property="age" column="studentAge"/>
+			<result property="gender" column="studentGender"/>
+		</collection>
+		<collection property="courseList" ofType="Course">
+			<id property="id" column="courseId"/>
+			<result property="name" column="courseName"/>
+			<result property="credit" column="courseCredit"/>
+		</collection>
+	</resultMap>
+	<sql id="banjiColums">
+		id,name
+	</sql>
+
+	<!-- 业务代码 -->
+	<select id="getTotalCount" resultType="int">
+		select count(id) 
+		from banji
+	</select>
+	<select id="pageList" resultMap="banjiMap">
+		select b.id AS banjiId,b.name AS banjiName
+		from banji AS b
+		limit #{offset},#{pageSize}
+	</select>
+	<delete id="deleteById" parameterType="integer">
+		delete 
+		from banji 
+		where id=#{id}
+	</delete>
+	<select id="findCountByName" parameterType="string" resultType="integer">
+		select count(id)
+		from banji 
+		where name=#{name}
+	</select>
+	<insert id="addBanji" parameterType="Banji">
+		insert 
+		into banji(name) 
+		values (#{name})
+	</insert>
+	<select id="list" resultType="banji">
+		select id,name
+		from banji
+	</select>
+	
+	
+</mapper>
