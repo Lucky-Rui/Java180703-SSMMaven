@@ -25,7 +25,7 @@
 	</sql>
 
 	<!-- 业务代码 -->
-	<select id="getTotalCount" resultType="int">
+	<select id="getTotalCount" resultType="integer">
 		select count(id) 
 		from banji
 	</select>

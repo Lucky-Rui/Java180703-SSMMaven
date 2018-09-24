@@ -84,7 +84,7 @@
 		ON s.banji_id = b.id
 		<where>
 			<if test="condition.name != null and condition.name != '' ">
-				and name like '%${condition.name}%'
+				and s.name like '%${condition.name}%'
 			</if>
 			<if test="condition.age != null">
 				and age=#{condition.age}

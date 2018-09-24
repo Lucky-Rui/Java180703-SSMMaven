@@ -72,7 +72,7 @@ public class StudentController {
 
 	@RequestMapping(value = "/addStudent")
 	@ResponseBody
-	public boolean addBanji(Student student) {
+	public boolean addStudent(Student student) {
 		return studentService.addStudent(student);
 	}
 	

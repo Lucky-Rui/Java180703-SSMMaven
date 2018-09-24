@@ -100,7 +100,7 @@
 					<tr>
 						<th><input type="checkbox" id="selectAlls"
 							onclick="selectAll()" /> 全选</th>
-						<th>ID</th>
+						<th name="ID">ID</th>
 						<th>姓名</th>
 						<th>年龄</th>
 						<th>性别</th>
@@ -225,7 +225,7 @@
 			   });
 			}
 			
-			function updateStudent(){
+			function updateStudent(id){
 				 //layer弹框，弹出添加页面
 			  	 layer.open({
 			     type : 2, // iframe

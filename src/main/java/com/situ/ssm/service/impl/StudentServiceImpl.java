@@ -66,7 +66,7 @@ public class StudentServiceImpl implements IStudentService {
 	@Override
 	public boolean updateStudent(Student student) {
 		int count = studentMapper.updateStudent(student);
-		return false;
+		return count == 1 ? true : false ;
 	}
 
 
